@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    // $.getJSON("https://www.markerapi.com/api/v2/trademarks/trademark/legal/status/all/start/0/username/danbanna/password/Mp8L7BjfbT", function(result){
+    //   $.each(result, function(i, field){
+    //     $("div").append(field + " ");
+    //   });
+    // });
+    $.ajax({
+    url: "https://www.markerapi.com/api/v2/trademarks/trademark/legal/status/all/start/0/username/danbanna/password/Mp8L7BjfbT",
+    type: 'GET',
+    // This is the important part
+    xhrFields: {
+        withCredentials: true
+    },
+    // This is the important part
+    data: {
+    },
+    success: function (response) {
+      response.each(result, function(i, field){
+        $("div").append(field + " ");
+      });
+    },
+    error: function (xhr, status) {
+        // handle errors
+    }
+});
+  });
+});
+</script>
+</head>
+<body>
+<input type="text" name="search" id="search" size="20" maxlength="50" class="form-control" placeholder="type a search">
+<button>Click me</button>
+​
+</body>
+</html>
